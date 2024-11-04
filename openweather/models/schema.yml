@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: session_summary
+    description: "Analytics model for session data"
+
+
+    columns:
+      - name: CITY_ID
+        tests: 
+          - not_null
+      - name: DATE
+        tests:
+          - not_null
+
+      - name: AVG_TEMP
+        tests:
+          - not_null

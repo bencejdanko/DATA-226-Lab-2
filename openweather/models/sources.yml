@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: raw_data
+    database: openweather
+    schema: raw_data
+    description: "Schema which stores raw tables (ETL)"
+    tables:
+      - name: weather_fact_table
+        identifier: weather_fact_table
+        description: "Weather data including timestamp"
+      - name: city_dimension_table
+        identifier: city_dimension_table
+        description: "city data"
+  - name: analytics
+    database: openweather
+    schema: analytics
+    description: "Schema with stores analytics tables (ELT)"
+    tables:
+      - name: session_summary
+        identifier: session_summary
+        description: "Complete session info"
