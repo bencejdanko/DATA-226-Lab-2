@@ -4,7 +4,7 @@ from airflow.models import Variable
 
 import datetime
 
-DBT_PROJECT_DIR = "/opt/airflow/DATA-226-Lab-2"
+DBT_PROJECT_DIR = "/opt/airflow/DATA-226-Lab-2/openweather"
 
 account = Variable.get("SNOWFLAKE_ACCOUNT")
 password = Variable.get("SNOWFLAKE_PASSWORD")
