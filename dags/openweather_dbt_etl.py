@@ -35,12 +35,12 @@ with DAG(
         bash_command=f"/home/airflow/.local/bin/dbt run --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
     )
 
-    dbt_run = BashOperator(
+    dbt_test = BashOperator(
         task_id="dbt_test",
         bash_command=f"/home/airflow/.local/bin/dbt test --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
     )
 
-    dbt_run = BashOperator(
+    dbt_snapshot = BashOperator(
         task_id="dbt_snapshot",
         bash_command=f"/home/airflow/.local/bin/dbt snapshot --profiles-dir {DBT_PROJECT_DIR} --project-dir {DBT_PROJECT_DIR}",
     )
