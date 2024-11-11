@@ -63,7 +63,7 @@ def get_weather_data(cities_df):
         start, end = get_logical_date()
 
         url = f'https://history.openweathermap.org/data/2.5/history/city?lat={lat}&lon={lon}&type=hour&start={start}&end={end}&appid={key}'
-        time.sleep(1)  # To limit the API call to 1 per second
+        time.sleep(0.2)  # To limit the API call to 1 per second
         response = requests.get(url)
         weather_json = response.json()
 
