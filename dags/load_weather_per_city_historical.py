@@ -61,11 +61,6 @@ def get_weather_data(cities_df):
         lon = row['Longitude']
 
         start, end = get_logical_date()
-        # verify today isn't the logical date
-        today = datetime.datetime.now()
-        if today >= start and today <= end:
-            print('Today is the logical date, skipping data extraction')
-            break
 
         url = f'https://history.openweathermap.org/data/2.5/history/city?lat={lat}&lon={lon}&type=hour&start={start}&end={end}&appid={key}'
         time.sleep(1)  # To limit the API call to 1 per second
@@ -107,6 +102,7 @@ from airflow import DAG
 with DAG(
     'load_weather_per_city_historical',
     start_date= datetime.datetime(2024,10,15),
+    end_date = datetime.datetime(2024,11,9),
     schedule_interval='@daily',
     catchup=True
 ) as dag:
