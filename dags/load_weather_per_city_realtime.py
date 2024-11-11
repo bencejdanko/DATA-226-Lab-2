@@ -50,7 +50,6 @@ def get_weather_data(cities_df):
             'humidity': weather_json.get('main', {}).get('humidity', None),
             'wind_speed': weather_json.get('wind', {}).get('speed', None),
             'cloud_coverage': weather_json.get('clouds', {}).get('all', None),
-            'visibility': weather_json.get('visibility', None),
             'weather_main': weather_json.get('weather', [{}])[0].get('main', ''),
             'weather_det': weather_json.get('weather', [{}])[0].get('description', '')
         }
