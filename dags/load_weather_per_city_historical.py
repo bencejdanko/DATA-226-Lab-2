@@ -105,9 +105,18 @@ with DAG(
     schedule_interval='@daily',
     catchup=True
 ) as dag:
-
-    cities_df = get_city_data()
-    weather_df = get_weather_data(cities_df)
-    load_weather = load_weather_data(weather_df)
+    
+    # return if logical date is within current date
+    start, end = get_logical_date()
+    if start > datetime.datetime.now().timestamp():
+        print('No data available for the selected date')
+        cites = None
+        weather_df = None
+        load_weather = None
+    
+    else:
+        cities_df = get_city_data()
+        weather_df = get_weather_data(cities_df)
+        load_weather = load_weather_data(weather_df)
 
     cities_df >> weather_df >> load_weather
