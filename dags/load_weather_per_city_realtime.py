@@ -70,7 +70,7 @@ def load_weather_data(weather_df):
 from airflow import DAG
 
 with DAG(
-    'load_weather_per_city',
+    'load_weather_per_city_realtime',
     start_date= datetime.datetime(2024,10,24),
     schedule_interval='@hourly',
     catchup=False
