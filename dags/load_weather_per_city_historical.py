@@ -61,6 +61,11 @@ def get_weather_data(cities_df):
         lon = row['Longitude']
 
         start, end = get_logical_date()
+        # verify today isn't the logical date
+        today = datetime.datetime.now()
+        if today >= start and today <= end:
+            print('Today is the logical date, skipping data extraction')
+            break
 
         url = f'https://history.openweathermap.org/data/2.5/history/city?lat={lat}&lon={lon}&type=hour&start={start}&end={end}&appid={key}'
         time.sleep(1)  # To limit the API call to 1 per second
